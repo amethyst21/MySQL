@@ -1,0 +1,45 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use v5.10; # for say() function
+ 
+use DBI;
+ 
+say "Perl MySQL Delete Data Demo";
+ 
+# MySQL database configurations
+my $dsn = "DBI:mysql:perlmysqldb";
+my $username = "root";
+my $password = '';
+ 
+# connect to MySQL database
+my %attr = (PrintError=>0, RaiseError=>1);
+ 
+my $dbh = DBI->connect($dsn,$username,$password, \%attr);
+ 
+# delete 1 row with id 1
+# say "Link with id 1 deleted successfully!" if delete_one_row($dbh,1);
+ 
+# delete all rows in the clinks table
+# say "All links deleted successfully!" if delete_all_rows($dbh);
+ 
+# disconnect from the MySQL database
+$dbh->disconnect();
+ 
+sub delete_one_row {
+    # delete one row from table
+    # $dbh: database handle
+    # $link_id: id of the link that need to delete
+    my($dbh,$link_id)  = @_;
+    my $sql = "DELETE FROM clinks WHERE link_id = ?";
+    my $sth = $dbh->prepare($sql);
+    return $sth->execute($link_id);
+}
+ 
+sub delete_all_rows {
+    # delete all rows in the clinks table
+    my($dbh) = @_;
+    my $sql = "TRUNCATE TABLE clinks";
+    my $sth = $dbh->prepare($sql);
+    return $sth->execute(); 
+}
