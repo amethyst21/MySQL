@@ -1,0 +1,6 @@
+//SQL is an abbreviation for structured query language, and pronounced either see-kwell or as separate letters.
+//SQL is a standardized query language for requesting information from a database. The original version called SEQUEL 
+//(structured English query language) was designed by an IBM research center in 1974 and 1975.
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),
+    -> species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+    
