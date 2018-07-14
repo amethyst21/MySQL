@@ -1,0 +1,8 @@
+SELECT 
+    lastname, firstname, jobtitle
+FROM
+    employees;
+    
+ //If you want to get data for all columns in the employees table, you can list all column names in the SELECT clause. 
+ //Or you just use the asterisk (*) to indicate that you want to get data from all columns of the table like the following query:
+//like SELECT * FROM employees;
